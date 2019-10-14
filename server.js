@@ -7,10 +7,10 @@ const app = express();
 
 app.use(bodyParser.json());
 
-// app.use(express.static(path.join(__dirname, './client/dist/client')));
+app.use(express.static(path.join(__dirname, './public/dist/public')));
 
-// require('./server/config/database');
-// require('./server/config/routes')(app);
+require('./server/config/database');
+require('./server/config/routes')(app);
 
 
 app.listen(PORT, function(){
