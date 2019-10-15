@@ -1,9 +1,12 @@
 // require controllers
+let tasks = require('./../controllers/tasks');
 
 module.exports = function(app){
 
-    app.get('/test', function(req, res){
-        res.json({message: 'yay you talked to my server'});
-    })
+    app.get('/tasks', tasks.index);
+    app.get('/tasks/:id', tasks.findById);
+    app.post('/tasks', tasks.create);
+    app.put('/tasks/:id', tasks.update);
+    app.delete('/tasks/:id', tasks.delete);
 
 };
