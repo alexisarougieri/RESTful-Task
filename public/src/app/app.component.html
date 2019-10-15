@@ -11,6 +11,18 @@
   </label>
   <input (click)="onSubmit(newTask)" type="submit" value="Submit Task"><br>
 </div>
+<div>
+  <input (click)="getAllTask()" type="submit" value="view all tasks">
+</div>
+<div *ngIf="tasktoedit.title">
+  <h1>Edit a Task</h1>
+  <form (submit)="onEdit(tasktoedit._id, tasktoedit)">
+    <p> {{ tasktoedit.title }}</p>
+    Title: <input type="text" id="titleedit" name="tasktoedit.title" [(ngModel)]="tasktoedit.title">
+    Desc: <input type="text" id="descedit" name="tasktoedit.desc" [(ngModel)]="tasktoedit.desc">
+    <input type="submit" value="Edit">
+  </form>
+</div>
 <p *ngFor="let task of tasks">
   <li>Title: {{ task.title }}</li>
   <li>Desc: {{ task.desc }}</li>
@@ -18,28 +30,6 @@
   <button (click)="deleteTask(task._id)">Delete</button>
   <button (click)="editForm(task._id)">Edit</button>
 </p>
-<div>
-  <input (click)="getAllTask()" type="submit" value="view all tasks">
-</div>
-
-<div *ngIf="tasktoedit.title">
-  <h1>Edit a Task</h1>
-  <form (submit)="onEdit(tasktoedit._id, tasktoedit)">
-    <p> {{ tasktoedit.title | json }}</p>
-    Title: <input type="text" id="titleedit" name="tasktoedit.title" [(ngModel)]="tasktoedit.title">
-    Desc: <input type="text" id="descedit" name="tasktoedit.desc" [(ngModel)]="tasktoedit.desc">
-    <input type="submit" value="Edit">
-  </form>
-</div>
-
-<!-- <div *ngIf="editTog">
-  <h1>Edit a Task</h1>
-  <form (submit)="onEdit()">
-      <p><input class="fields" type="text" name="editTask.title" [(ngModel)]="editTask.title"></p>
-      <p><input class="fields" type="text" name="editTask.desc" [(ngModel)]="editTask.desc"></p>
-      <input  id="edit2" class="btn" type="submit" value="Edit" />
-  </form>
-</div> -->
 
 
 
